@@ -3,207 +3,90 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Drop SA — Product Catalogue</title>
-  <meta name="description" content="The Drop SA — Browse products with prices and order via WhatsApp. Nationwide in South Africa." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>The Drop SA — Catalogue</title>
   <style>
-    :root{--bg:#0f1115;--card:#171a21;--muted:#9aa3b2;--text:#e6e8ec;--accent:#22c55e;--ring:rgba(34,197,94,.35)}
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1100px;margin:0 auto;padding:16px}
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(15,17,21,.9), rgba(15,17,21,.7));backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:40px;height:40px;border-radius:10px;overflow:hidden;background:#222;border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;font-weight:700}
-    .brand h1{font-size:18px;margin:0}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#12161f;color:#e6e8ec;cursor:pointer}
-    .btn:hover{border-color:rgba(255,255,255,.2)}
-    .btn.whatsapp{background:var(--accent);color:#08110a;border:none}
-
-    .hero{display:grid;gap:18px;padding:36px 0 22px}
-    .hero h2{font-size:28px;margin:0 0 8px}
-    .hero p{color:var(--muted);margin:0}
-    .hero-card{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:center;background:linear-gradient(160deg,#141821,#0e1219 55%);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#12151b;border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px}
-
-    section{padding:28px 0}
-    h3.section-title{font-size:22px;margin:0 0 14px}
-
-    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-    .input{flex:1;min-width:200px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0e1219;color:var(--text)}
-
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    @media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .card .media{aspect-ratio:1.2/1;background:#101319;display:grid;place-items:center;color:#63708a}
-    .card .body{padding:12px}
-    .price{font-weight:700}
-    .muted{color:var(--muted)}
-
-    .info{display:grid;gap:12px}
-    @media(min-width:720px){.info{grid-template-columns:repeat(3,1fr)}}
-    .ibox{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:14px}
-
-    footer{border-top:1px solid rgba(255,255,255,.07);padding:24px 0;color:var(--muted);font-size:14px}
-    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-    .badge{padding:6px 10px;border-radius:999px;background:#12151b;border:1px solid rgba(255,255,255,.07)}
-    .btn:focus{outline:3px solid var(--ring);outline-offset:2px}
+    body{margin:0;font-family:sans-serif;background:#f7f7f7;color:#333}
+    header{background:#111;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+    header h1{margin:0;font-size:20px}
+    header a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:6px;background:#25d366}
+    .hero{padding:20px;text-align:center;background:#fff}
+    .toolbar{padding:10px;text-align:center}
+    .chip{display:inline-block;margin:4px;padding:8px 12px;border-radius:20px;background:#ddd;cursor:pointer}
+    .chip.active{background:#25d366;color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:20px}
+    .card{background:#fff;border:1px solid #ccc;border-radius:8px;overflow:hidden}
+    .card img{width:100%;height:200px;object-fit:cover}
+    .price-tag{position:absolute;bottom:8px;left:8px;background:#000;color:#fff;padding:4px 8px;border-radius:12px;font-size:14px}
+    .card-body{padding:12px}
+    .card-body h3{margin:0;font-size:18px}
+    .card-body p{margin:6px 0;color:#555}
+    .btn{display:inline-block;margin-top:8px;padding:8px 12px;background:#25d366;color:#fff;text-decoration:none;border-radius:6px}
+    footer{padding:20px;text-align:center;font-size:14px;color:#666}
   </style>
 </head>
 <body>
+  <!--
+    HOW TO ADD NEW PRODUCTS:
+    1. Upload your product photo(s) to GitHub inside a folder called "images".
+       Example: images/gloves.jpg
+    2. Duplicate one of the <article class="card"> blocks below.
+    3. Update category (data-cat), product name, price, and WhatsApp link.
+    4. Commit changes — your site updates live in 1–2 minutes.
+  -->
+
   <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-label="The Drop SA logo"><span>TD</span></div>
-        <h1>The Drop SA</h1>
-      </div>
-      <nav>
-        <a class="btn" href="#products">Products</a>
-        <a class="btn whatsapp" href="https://wa.me/27673440380" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </nav>
-    </div>
+    <h1>The Drop SA</h1>
+    <a href="https://wa.me/27673440380" target="_blank">Chat on WhatsApp</a>
   </header>
 
-  <main class="container">
-    <section class="hero" id="home">
-      <div class="hero-card">
-        <div>
-          <h2>Browse & WhatsApp to order 🇿🇦</h2>
-          <p>Simple product list with clear prices. Message us on WhatsApp to order—fast replies and nationwide delivery.</p>
-          <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
-            <a class="btn whatsapp" href="https://wa.me/27673440380?text=Hi%20The%20Drop%20SA!%20I'm%20interested%20in%20your%20products" target="_blank" rel="noopener">Order on WhatsApp</a>
-            <a class="btn" href="#products">View products</a>
-          </div>
-          <div class="badges" style="margin-top:8px">
-            <span class="badge">Tactical & EDC</span>
-            <span class="badge">Jewellery</span>
-            <span class="badge">Fragrance</span>
-            <span class="badge">Car Accessories</span>
-          </div>
-        </div>
-        <div>
-          <div class="pill">No raffles • Catalogue only</div>
-          <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1280&auto=format&fit=crop" alt="Product collage" style="border-radius:14px;margin-top:10px;border:1px solid rgba(255,255,255,.06)">
-        </div>
+  <section class="hero">
+    <h2>Browse Products by Category</h2>
+    <p>Tap on a product to order via WhatsApp. Nationwide delivery 🇿🇦</p>
+  </section>
+
+  <section class="toolbar">
+    <span class="chip active" data-cat="all">All</span>
+    <span class="chip" data-cat="Tactical">Tactical</span>
+    <span class="chip" data-cat="Jewellery">Jewellery</span>
+    <span class="chip" data-cat="Fragrance">Fragrance</span>
+    <span class="chip" data-cat="Car">Car</span>
+  </section>
+
+  <section class="grid" id="grid">
+    <!-- SAMPLE PRODUCTS -->
+
+    <article class="card" data-cat="Tactical">
+      <div style="position:relative">
+        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=900&auto=format&fit=crop" alt="Tactical Gloves">
+        <div class="price-tag">R249</div>
       </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products">
-      <h3 class="section-title">Products</h3>
-      <div class="toolbar">
-        <input id="search" class="input" type="search" placeholder="Search products… (e.g. chain, perfume, mount)" aria-label="Search products" />
-        <button class="btn" onclick="resetSearch()">Reset</button>
+      <div class="card-body">
+        <h3>Tactical Gloves</h3>
+        <p>Sizes M–XL • Black</p>
+        <a class="btn" href="https://wa.me/27673440380?text=Hi! I'd like to order Tactical Gloves (R249)" target="_blank">WhatsApp to Order</a>
       </div>
-      <div id="grid" class="grid">
-        <!-- Duplicate cards to add more products. Update data-name, data-price, image, and WhatsApp text. -->
-        <article class="card" data-name="Tactical Gloves" data-price="R249">
-          <div class="media"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=900&auto=format&fit=crop" alt="Tactical gloves"></div>
-          <div class="body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-              <strong>Tactical Gloves</strong>
-              <span class="price">R249</span>
-            </div>
-            <p class="muted">Sizes M–XL • Black</p>
-            <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/27673440380?text=Hi!%20I'd%20like%20to%20order%20Tactical%20Gloves%20(R249)">WhatsApp to Order</a>
-          </div>
-        </article>
+    </article>
 
-        <article class="card" data-name="Silver Chain 5mm" data-price="R299">
-          <div class="media"><img src="https://images.unsplash.com/photo-1585386959984-a41552231658?q=80&w=900&auto=format&fit=crop" alt="Silver chain"></div>
-          <div class="body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-              <strong>Silver Chain 5mm</strong>
-              <span class="price">R299</span>
-            </div>
-            <p class="muted">Stainless • 55cm</p>
-            <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/27673440380?text=Hi!%20I'm%20keen%20on%20the%20Silver%20Chain%205mm%20(R299)">WhatsApp to Order</a>
-          </div>
-        </article>
-
-        <article class="card" data-name="Men's Perfume 100ml" data-price="R399">
-          <div class="media"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=900&auto=format&fit=crop" alt="Men's Perfume 100ml"></div>
-          <div class="body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-              <strong>Men's Perfume 100ml</strong>
-              <span class="price">R399</span>
-            </div>
-            <p class="muted">Long‑lasting • Fresh</p>
-            <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/27673440380?text=Hi!%20I'd%20like%20to%20buy%20the%20Men's%20Perfume%20100ml%20(R399)">WhatsApp to Order</a>
-          </div>
-        </article>
-
-        <article class="card" data-name="Car Phone Mount" data-price="R149">
-          <div class="media"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=900&auto=format&fit=crop" alt="Car phone mount"></div>
-          <div class="body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-              <strong>Car Phone Mount</strong>
-              <span class="price">R149</span>
-            </div>
-            <p class="muted">360° • Vent clip</p>
-            <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/27673440380?text=Hi!%20I'd%20like%20the%20Car%20Phone%20Mount%20(R149)">WhatsApp to Order</a>
-          </div>
-        </article>
+    <article class="card" data-cat="Jewellery">
+      <div style="position:relative">
+        <img src="https://images.unsplash.com/photo-1585386959984-a41552231658?q=80&w=900&auto=format&fit=crop" alt="Silver Chain 5mm">
+        <div class="price-tag">R299</div>
       </div>
-    </section>
-
-    <!-- INFO / DELIVERY -->
-    <section id="info">
-      <h3 class="section-title">Orders & Delivery (South Africa)</h3>
-      <div class="info">
-        <div class="ibox">
-          <strong>How to order</strong>
-          <p class="muted">Tap any product’s WhatsApp button and tell us the product name and quantity. We’ll confirm availability and payment.</p>
-        </div>
-        <div class="ibox">
-          <strong>Payment</strong>
-          <p class="muted">EFT preferred. Cash‑on‑delivery may be available in select areas—ask on WhatsApp.</p>
-        </div>
-        <div class="ibox">
-          <strong>Nationwide courier</strong>
-          <p class="muted">Courier fees depend on your location. We’ll confirm the delivery price when you order.</p>
-        </div>
+      <div class="card-body">
+        <h3>Silver Chain 5mm</h3>
+        <p>Stainless • 55cm</p>
+        <a class="btn" href="https://wa.me/27673440380?text=Hi! I'm keen on the Silver Chain 5mm (R299)" target="_blank">WhatsApp to Order</a>
       </div>
-    </section>
-  </main>
+    </article>
 
-  <footer>
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
-        <div>© <span id="year"></span> The Drop SA • All rights reserved</div>
-        <div class="badges">
-          <span class="badge">WhatsApp orders</span>
-          <span class="badge">Mobile friendly</span>
-          <span class="badge">Fast delivery</span>
-        </div>
+    <article class="card" data-cat="Fragrance">
+      <div style="position:relative">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=900&auto=format&fit=crop" alt="Men's Perfume 100ml">
+        <div class="price-tag">R399</div>
       </div>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple search filter by product name or price
-    const search = document.getElementById('search');
-    const grid = document.getElementById('grid');
-    const cards = Array.from(grid.children);
-
-    function filter(){
-      const q = search.value.trim().toLowerCase();
-      cards.forEach(card=>{
-        const hay = (card.dataset.name + ' ' + card.dataset.price).toLowerCase();
-        card.style.display = hay.includes(q) ? '' : 'none';
-      });
-    }
-    function resetSearch(){
-      search.value='';
-      filter();
-    }
-    search.addEventListener('input', filter);
-  </script>
-</body>
-</html>
+      <div class="card-body">
+        <h3>Men's Perfume 100ml</h3>
+        <p>Long-lasting • Fresh</p>
+        <a class="btn" href="https://wa.me/27673440380?text=Hi! I'd like to buy the Men's Perfume 100ml (R399)" target="_blank">WhatsApp to Order</a>
+      </div>
+    </article
