@@ -89,4 +89,42 @@
         <p>Long-lasting • Fresh</p>
         <a class="btn" href="https://wa.me/27673440380?text=Hi! I'd like to buy the Men's Perfume 100ml (R399)" target="_blank">WhatsApp to Order</a>
       </div>
-    </article
+    </article>
+
+    <article class="card" data-cat="Car">
+      <div style="position:relative">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=900&auto=format&fit=crop" alt="Car Phone Mount">
+        <div class="price-tag">R149</div>
+      </div>
+      <div class="card-body">
+        <h3>Car Phone Mount</h3>
+        <p>360° • Vent clip</p>
+        <a class="btn" href="https://wa.me/27673440380?text=Hi! I'd like the Car Phone Mount (R149)" target="_blank">WhatsApp to Order</a>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> The Drop SA • WhatsApp Orders • Nationwide Delivery</p>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Category filtering
+    const chips = document.querySelectorAll(".chip");
+    const cards = document.querySelectorAll(".card");
+    chips.forEach(chip=>{
+      chip.addEventListener("click",()=>{
+        chips.forEach(c=>c.classList.remove("active"));
+        chip.classList.add("active");
+        const cat = chip.dataset.cat;
+        cards.forEach(card=>{
+          card.style.display = (cat==="all"||card.dataset.cat===cat) ? "" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
